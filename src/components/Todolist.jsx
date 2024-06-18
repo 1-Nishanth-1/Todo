@@ -20,31 +20,6 @@ export const Todolist = ({
     seteditId(item.id);
     setinputText(item.task);
   };
-
-  //priority up
-  const priorityUp = (item1) => {
-    let count = 0;
-    settodoArray(
-      todoArray.map((item2) => {
-        if (item1 === item2) {
-          count++;
-          return;
-        } else if (count === 1) {
-          return item2;
-          count++;
-        } else if (count == 2) {
-          return item1;
-          count++;
-        } else {
-          return item2;
-        }
-      })
-    );
-  };
-  const priorityDown = (item) => {
-    const x = todoArray.indexOf(item);
-    [todoArray[x], todoArray[x - 1]] = [todoArray[x - 1], todoArray[x]];
-  };
   return (
     <div>
       <ol>
@@ -56,12 +31,6 @@ export const Todolist = ({
             </span>
             <span onClick={() => deleteTask(item.id)}>
               <MdDelete />
-            </span>
-            <span onClick={() => priorityUp(item)}>
-              <FaArrowUp />
-            </span>
-            <span onClick={() => priorityDown(item)}>
-              <FaArrowDown />
             </span>
           </li>
         ))}
